@@ -1,0 +1,16 @@
+(cl:in-package beginner_tutorials-msg)
+(cl:export '(ISVALID-VAL
+          ISVALID
+          RESTARTSREMAINING-VAL
+          RESTARTSREMAINING
+          ENCODERCOUNTS-VAL
+          ENCODERCOUNTS
+          DISTANCETOSTART-VAL
+          DISTANCETOSTART
+          DISTANCETOEND-VAL
+          DISTANCETOEND
+          TASKDESCRIPTION-VAL
+          TASKDESCRIPTION
+          DISTANCESTOOTHERROBOTS-VAL
+          DISTANCESTOOTHERROBOTS
+))

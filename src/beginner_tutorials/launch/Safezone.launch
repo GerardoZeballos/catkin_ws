@@ -1,0 +1,21 @@
+<launch>
+  <node
+    pkg="turtlesim"
+    type="turtlesim_node"
+    name="turtlesim"
+  />
+  <node
+    pkg="beginner_tutorials"
+    type="safe_zone_vel_publisher"
+    args="/cmd_vel"
+    name="cmd_vel"
+  />
+
+   <node
+    pkg="beginner_tutorials"
+    type="safe_zone_vel_publisher"
+    args="/pose"
+    name="pose"
+  />
+
+</launch>

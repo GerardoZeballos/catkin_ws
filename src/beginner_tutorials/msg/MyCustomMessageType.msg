@@ -1,0 +1,7 @@
+bool isValid
+uint32 restartsRemaining
+int32 encoderCounts
+float32 distanceToStart
+float64 distanceToEnd
+string taskDescription
+float64[] distancesToOtherRobots
