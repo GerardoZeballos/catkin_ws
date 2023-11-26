@@ -1,2 +1,0 @@
-beginner_tutorials:learning_tf2-master:mastering_ros_robot_description_pkg-master
--DCATKIN_DEVEL_PREFIX=/home/ubunturos/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubunturos/catkin_ws/install -G Unix Makefiles
