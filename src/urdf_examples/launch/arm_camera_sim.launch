@@ -1,0 +1,24 @@
+<launch>
+    <!-- Specify the name of the package and path to xacro file within the package -->
+    <arg name="pkg_name" default="urdf_example" />
+    <arg name="file_subpath" default="description/example_robot.urdf.xacro" />
+
+    <!-- Use xacro to process the file -->
+    <param name="robot_description">
+        $(find $(arg pkg_name))/$(arg file_subpath)
+    </param>
+
+    <!-- Configure the robot state publisher node -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+        <param name="use_sim_time" value="True" />
+    </node>
+
+    <!-- Include the Gazebo launch file -->
+    <include file="$(find gazebo_ros)/launch/gazebo.launch.py" />
+
+    <!-- Spawn the robot entity in Gazebo -->
+    <node name="spawn_entity" pkg="gazebo_ros" type="spawn_entity.py" output="screen">
+        <remap from="robot_description" to="/robot_description" />
+        <param name="entity" value="my_bot" />
+    </node>
+</launch>

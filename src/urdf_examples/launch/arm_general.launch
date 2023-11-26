@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="model" />
+    <!-- Use xacro to process the file -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find urdf_examples)/urdf/$(arg model)" />
+
+    <!-- Starting robot state publish which will publish tf -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <!-- Starting Joint state publisher node which will publish the joint values. Using the gui alterantive -->
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+    <!-- Launch visualization in rviz -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find urdf_examples)/arm_vis.rviz" required="true" />
+
+</launch>

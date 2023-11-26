@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+
+    <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find rrbot_gazebo)/worlds/rrbot.world"/>
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+    </include>
+
+    <!-- Specify the name of the package and path to xacro file within the package -->
+    <arg name="model" default="robot_camera_sim3.urdf.xacro" />
+
+    <!-- Use xacro to process the file -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find urdf_examples)/urdf/$(arg model)"/>
+
+    <!-- Spawn the robot entity in Gazebo -->
+    <node name="spawn_robot_in_gazebo" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-param robot_description -urdf -model robot_camera_sim"/>
+
+    <!-- Configure the robot state publisher node -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+    </node>
+
+    <rosparam command="load"
+                file="$(find urdf_examples)/config/joints.yaml"
+                ns="r2d2_joint_state_controller" />
+
+    <node name="r2d2_controller_spawner" pkg="controller_manager" type="spawner"
+        args="r2d2_joint_state_controller"/>
+
+</launch>

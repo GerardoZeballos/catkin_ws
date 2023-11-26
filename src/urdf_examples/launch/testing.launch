@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Use xacro to process the file -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find urdf_examples)/urdf/example_robot.xacro" />
+</launch>

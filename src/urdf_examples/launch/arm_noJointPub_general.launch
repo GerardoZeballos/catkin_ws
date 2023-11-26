@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Specify the name of the package and path to xacro file within the package -->
+    <arg name="model" default="robot_camera_sim.urdf.xacro" />
+
+    <!-- Use xacro to process the file -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find urdf_examples)/urdf/$(arg model)"/>
+
+    <!-- Configure the robot state publisher node -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+        <param name="use_sim_time" value="True" />
+    </node>
+
+    <!-- Include the Gazebo launch file -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+
+    <!-- Spawn the robot entity in Gazebo -->
+    <node name="spawn_robot_in_gazebo" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-param robot_description -urdf -model robot_camera_sim"/>
+
+</launch>
