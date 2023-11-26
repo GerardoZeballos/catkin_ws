@@ -244,5 +244,3 @@ target_link_libraries(subpose ${catkin_LIBRARIES})
 add_executable(safe_zone_vel_publisher src/safe_zone_vel_publisher.cpp)
 target_link_libraries(safe_zone_vel_publisher ${catkin_LIBRARIES})
 
-add_executable(safe_zone_vel_publisherv2 src/safe_zone_vel_publisherv2.cpp)
-target_link_libraries(safe_zone_vel_publisherv2 ${catkin_LIBRARIES})
