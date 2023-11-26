@@ -246,3 +246,6 @@ target_link_libraries(safe_zone_vel_publisher ${catkin_LIBRARIES})
 
 add_executable(safe_zone_vel_publisher_v2 src/safe_zone_vel_publisher_v2.cpp)
 target_link_libraries(safe_zone_vel_publisher_v2 ${catkin_LIBRARIES})
+
+add_executable(smart_turtle src/smart_turtle.cpp)
+target_link_libraries(smart_turtle ${catkin_LIBRARIES})
