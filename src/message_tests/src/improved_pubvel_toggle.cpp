@@ -32,8 +32,8 @@ bool changeRate(
 }
 
 bool Startstop(
-    message_tests::ToggleTurtle::Request &req,
-    message_tests::ToggleTurtle::Response &resp){
+    message_tests::StopRun::Request &req,
+    message_tests::StopRun::Response &resp){
         StopRun = req.run_turtle;
         ROS_INFO_STREAM("Turtle is "<<(StopRun?
                 "running":"stopped"));

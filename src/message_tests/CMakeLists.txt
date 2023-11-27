@@ -48,4 +48,5 @@ target_link_libraries(pubvel_toggle_plus ${catkin_LIBRARIES})
 add_dependencies(pubvel_toggle_plus ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
 target_link_libraries(spawn_turtle ${catkin_LIBRARIES})
 add_dependencies(improved_pubvel_toggle ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+target_link_libraries(improved_pubvel_toggle ${catkin_LIBRARIES})
 
