@@ -46,8 +46,8 @@ public:
     double wall_threshold = 0.2;
 
     // Check if the turtle is too close to any of the walls.
-    return (pose.x < wall_threshold || pose.x > 11 - wall_threshold ||
-            pose.y < wall_threshold || pose.y > 11 - wall_threshold);
+    return (pose.x < wall_threshold || pose.x > 9 - wall_threshold ||
+            pose.y < wall_threshold || pose.y > 9 - wall_threshold);
   }
 
 private:
