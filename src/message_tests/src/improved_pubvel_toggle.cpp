@@ -3,6 +3,7 @@
 #include <geometry_msgs/Twist.h>
 #include <message_tests/Changerate.h>
 #include <message_tests/StopStart.h>
+#include <message_tests/ChangeSpeed.h>
 
 bool forward = true;
 double newfrequency;
@@ -39,18 +40,30 @@ bool StopandRun(
         return true;
 }
 
+bool changeSpeed(
+    message_tests::ChangeSpeed::Request &req,
+    message_tests::ChangeSpeed::Response &resp){
+        current_speed = req.new_speed;
+        ROS_INFO_STREAM("Changing speed to "<<current_speed);
+        resp.success = true; 
+        return true;
+}
+
 int main(int argc, char **argv){
     ros::init(argc,argv,"improved_pubvel_toggle");
     ros::NodeHandle nh;
         
-    ros::ServiceServer server_toggle_forward = 
+    ros::ServiceServer server = 
         nh.advertiseService("toggle_forward",&toggleForward);
 
-    ros::ServiceServer server_change_rate =
+    ros::ServiceServer server0 =
         nh.advertiseService("change_rate",&changeRate);
 
-    ros::ServiceServer server_toggle_turtle =
+    ros::ServiceServer server1 =
         nh.advertiseService("StopRun",&StopandRun);
+
+    ros::ServiceServer server2 =
+        nh.advertiseService("Change_speed",&changeSpeed);
 
     ros::Publisher pub = nh.advertise<geometry_msgs::Twist>(
         "turtle1/cmd_vel", 1000);
