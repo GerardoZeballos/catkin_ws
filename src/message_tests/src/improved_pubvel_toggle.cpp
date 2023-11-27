@@ -58,7 +58,7 @@ int main(int argc, char **argv){
     ros::Rate rate(2);
     while(ros::ok()){
         geometry_msgs::Twist msg;
-        if (turtle_running) {
+        if (turtle_On) {
             msg.linear.x = forward ? current_speed : 0.0;
             msg.angular.z = forward ? 0.0 : current_speed;
         } else {
