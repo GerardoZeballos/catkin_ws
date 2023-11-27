@@ -2,12 +2,12 @@
 #include <std_srvs/Empty.h>
 #include <geometry_msgs/Twist.h>
 #include <message_tests/Changerate.h>
-#include <message_tests/ToggleTurtle.h>
+#include <message_tests/StopStart.h>
 
 bool forward = true;
 double newfrequency;
 bool ratechanged = false;
-bool turtle_running = true;
+bool turtle_On = true;
 double current_speed = 1.0;
 
 bool toggleForward(
@@ -30,11 +30,11 @@ bool changeRate(
         return true;
 }
 
-bool toggleTurtle(
-    message_tests::ToggleTurtle::Request &req,
-    message_tests::ToggleTurtle::Response &resp){
-        turtle_running = req.run_turtle;
-        ROS_INFO_STREAM("Turtle is "<<(turtle_running?
+bool StopandRun(
+    message_tests::StopStart::Request &req,
+    message_tests::StopStart::Response &resp){
+        turtle_On = req.run;
+        ROS_INFO_STREAM("Turtle is "<<(turtle_On?
                 "running":"stopped"));
         return true;
 }
@@ -50,7 +50,7 @@ int main(int argc, char **argv){
         nh.advertiseService("change_rate",&changeRate);
 
     ros::ServiceServer server_toggle_turtle =
-        nh.advertiseService("toggle_turtle",&toggleTurtle);
+        nh.advertiseService("StopRun",&StopandRun);
 
     ros::Publisher pub = nh.advertise<geometry_msgs::Twist>(
         "turtle1/cmd_vel", 1000);
