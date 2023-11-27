@@ -65,8 +65,8 @@ int main(int argc, char **argv){
     ros::ServiceServer server2 =
         nh.advertiseService("Change_speed",&changeSpeed);
 
-    ros::Publisher pub = nh.advertise<geometry_msgs::Twist>(
-        "turtle1/cmd_vel", 1000);
+    ros::Publisher pub = nh.advertise<geometry_msgs::Twist>( "turtle1/cmd_vel", 1000);
+    ros::Publisher pub2=nh.advertise<geometry_msgs::Twist>("MyTurtle/cmd_vel",1000);
     
     ros::Rate rate(2);
     while(ros::ok()){
