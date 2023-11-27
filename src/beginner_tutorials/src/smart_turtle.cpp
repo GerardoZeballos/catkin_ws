@@ -13,18 +13,18 @@ public:
   }
 
   void poseCallback(const turtlesim::Pose& pose) {
-    // Check if the turtle has hit a wall.
+   
     if (isHittingWall(pose)) {
-      // If hitting the wall, choose a random direction to turn away.
+
       angular_velocity_ = 2 * double(rand()) / double(RAND_MAX) - 1;
       hit_wall_ = true;
     } else {
-      // If not hitting the wall, move forward with a fixed linear velocity.
+      
       linear_velocity_ = 1.0;
       hit_wall_ = false;
     }
 
-    // Publish the velocity command.
+ 
     publishVelocity();
   }
 
@@ -35,17 +35,16 @@ public:
 
     pub_.publish(msg);
 
-    // Log the details.
+ 
     ROS_INFO_STREAM("Publishing velocity command:"
                     << " linear=" << msg.linear.x
                     << " angular=" << msg.angular.z);
   }
 
   bool isHittingWall(const turtlesim::Pose& pose) {
-    // Set a threshold for the distance from the walls to consider hitting the wall.
+  
     double wall_threshold = 0.2;
 
-    // Check if the turtle is too close to any of the walls.
     return (pose.x < wall_threshold || pose.x > 9 - wall_threshold ||
             pose.y < wall_threshold || pose.y > 9 - wall_threshold);
   }

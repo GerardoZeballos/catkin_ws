@@ -13,18 +13,14 @@ public:
   }
 
   void poseCallback(const turtlesim::Pose& pose) {
-    // Check if the turtle is in the safe zone (5x5 dimension square around the center).
     if (isInSafeZone(pose.x, pose.y)) {
-      // Inside the safe zone, publish a fixed linear velocity and random angular velocity.
       linear_velocity_ = 1.0;
       angular_velocity_ = double(rand()) / double(RAND_MAX);
     } else {
-      // Outside the safe zone, publish random linear and angular velocities.
       linear_velocity_ = double(rand()) / double(RAND_MAX);
       angular_velocity_ = 2 * double(rand()) / double(RAND_MAX) - 1;
     }
 
-    // Publish the velocity command.
     publishVelocity();
   }
 
@@ -34,22 +30,19 @@ public:
     msg.angular.z = angular_velocity_;
 
     pub_.publish(msg);
-
-    // Log the details.
+    // Send a message to rosout with the details.
     ROS_INFO_STREAM("Publishing velocity command:"
                     << " linear=" << msg.linear.x
                     << " angular=" << msg.angular.z);
   }
 
   bool isInSafeZone(double x, double y) {
-    // Define the dimensions of the safe zone (5x5 square around the center).
     double safeZoneSize = 5.0;
     double minX = 5.0 - safeZoneSize / 2.0;
     double maxX = 5.0 + safeZoneSize / 2.0;
     double minY = 5.0 - safeZoneSize / 2.0;
     double maxY = 5.0 + safeZoneSize / 2.0;
 
-    // Check if the turtle is inside the safe zone.
     return (x >= minX && x <= maxX && y >= minY && y <= maxY);
   }
 

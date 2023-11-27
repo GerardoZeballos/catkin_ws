@@ -11,7 +11,10 @@ bool ratechanged = false;
 bool turtle_On = true;
 double current_speed = 1.0;
 
-ros::Publisher pub_my_turtle;
+ros::ServiceClient toggle_forward;
+ros::ServiceClient Speed;
+
+ros::Publisher My_turtle;
 
 bool toggleForward(
     std_srvs::Empty::Request &req,
@@ -52,13 +55,16 @@ bool changeSpeed(
 }
 
 void cmdVelCallback(const geometry_msgs::Twist::ConstPtr &msg) {
-    pub_my_turtle.publish(*msg);
+    My_turtle.publish(*msg);
 }
 
 
 int main(int argc, char **argv){
     ros::init(argc,argv,"improved_pubvel_toggle");
     ros::NodeHandle nh;
+
+    toggle_forward = nh.serviceClient<std_srvs::Empty>("/toggle_forward");
+    Speed = nh.serviceClient<message_tests::ChangeSpeed>("/change_speed");
         
     ros::ServiceServer server = 
         nh.advertiseService("toggle_forward",&toggleForward);
@@ -74,7 +80,7 @@ int main(int argc, char **argv){
 
     ros::Publisher pub = nh.advertise<geometry_msgs::Twist>( "turtle1/cmd_vel", 1000);
 
-    pub_my_turtle = nh.advertise<geometry_msgs::Twist>("MyTurtle/cmd_vel", 1000);
+    My_turtle = nh.advertise<geometry_msgs::Twist>("Leo/cmd_vel", 1000);
     
     
     ros::Rate rate(2);
