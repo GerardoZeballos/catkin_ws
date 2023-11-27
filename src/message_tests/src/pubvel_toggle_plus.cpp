@@ -8,7 +8,6 @@
 bool forward = true;
 double newfrequency;
 bool ratechanged = false;
-bool StopandRun = true;
 
 bool toggleForward(
 	std_srvs::Empty::Request &req,
@@ -30,15 +29,6 @@ bool changeRate(
         return true;
 }
 
-bool StopStart(
-        message_tests::Changerate::Request &req,
-        message_tests::Changerate::Response &resp){
-
-         ROS_INFO_STREAM("Turtle is "<<(StopandRun?
-                "running":"stopped"));
-        return true;
-}
-
 
 int main(int argc, char **argv){
         ros::init(argc,argv,"pubvel_toggle_rate");
@@ -49,9 +39,6 @@ int main(int argc, char **argv){
                 
         ros::ServiceServer server0 =
                 nh.advertiseService("change_rate",&changeRate);
-        
-        ros::ServiceServer server = 
-		nh.advertiseService("Stop_Run",&StopStart);
                 
         ros::Publisher pub=nh.advertise<geometry_msgs::Twist>(
 		"turtle1/cmd_vel",1000);
