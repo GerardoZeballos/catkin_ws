@@ -1,0 +1,15 @@
+<launch>
+  <arg name="run_node_A" default="false" />
+
+  <node if="$(arg run_node_A)" pkg="turtlesim" type="turtle_teleop_key" name="Teleop_key" launch-prefix="xterm -e" output="screen" />
+
+  <node unless="$(arg run_node_A)" pkg="beginner_tutorials" type="pubvel" name="Ran_vels" output="screen" />
+
+  <node
+    pkg="turtlesim"
+    type="turtlesim_node"
+    name="turtlesim"
+    respawn="true"
+  />
+  
+</launch>

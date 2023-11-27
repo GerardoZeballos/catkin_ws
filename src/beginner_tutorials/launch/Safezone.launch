@@ -3,7 +3,7 @@
   <arg name="run_node_A" default="false" />
 
   <!-- Conditionally launch safe_zone_vel_publisher.cpp or smart_turtle.cpp -->
-  <node if="$(arg run_node_A)" pkg="beginner_tutorials" type="safe_zone_vel_publisher" name="safe_zone_vel_publisher_node" output="screen" />
+  <node if="$(arg run_node_A)" pkg="beginner_tutorials" type="safe_zone_vel_publisherv2" name="safe_zone_vel_publisher_node" output="screen" />
 
   <node unless="$(arg run_node_A)" pkg="beginner_tutorials" type="smart_turtle" name="smart_turtle_node" output="screen" />
   <node

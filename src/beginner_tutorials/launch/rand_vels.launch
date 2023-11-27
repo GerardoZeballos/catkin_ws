@@ -1,0 +1,11 @@
+<launch>
+  <include
+    file="$(find beginner_tutorials)/launch/rand_vel_turtle.launch"
+  />
+  <node
+    pkg="beginner_tutorials"
+    type="subpose"
+    name="pose_subscriber"
+    output="screen"
+  />
+</launch>

@@ -1,0 +1,15 @@
+<launch>
+  <node
+    pkg="turtlesim"
+    type="turtlesim_node"
+    name="turtlesim"
+    respawn="true"
+  />
+  <node
+    pkg="beginner_tutorials"
+    type="pubvel"
+    name="RandomVel"
+    required="true"
+    launch-prefix="xterm -e"
+  />
+</launch>
