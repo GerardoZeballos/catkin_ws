@@ -8,6 +8,7 @@
 bool forward = true;
 double newfrequency;
 bool ratechanged = false;
+bool StopandRun = false;
 
 bool toggleForward(
 	std_srvs::Empty::Request &req,
@@ -26,6 +27,17 @@ bool changeRate(
 
         newfrequency = req.newrate;
         ratechanged = true;
+        return true;
+}
+
+bool StoprStart(
+        message_tests::Changerate::Request &req,
+        message_tests::Changerate::Response &resp){
+
+        ROS_INFO_STREAM("StopRun ");
+
+        newfrequency = 0;
+        ratechanged = false;
         return true;
 }
 
