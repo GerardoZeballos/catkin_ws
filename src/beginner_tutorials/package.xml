@@ -65,6 +65,10 @@
   <depend>geometry_msgs</depend>
   <depend>turtlesim</depend>
 
+  <build_depend>evaluation_ros</build_depend>
+   <build_export_depend>evaluation_ros</build_export_depend>
+  <exec_depend>evaluation_ros</exec_depend>
+
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

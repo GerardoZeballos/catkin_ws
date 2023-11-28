@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   geometry_msgs
   turtlesim
+  evaluation_ros
 )
 
 ## System dependencies are found with CMake's conventions
@@ -250,3 +251,7 @@ target_link_libraries(smart_turtle ${catkin_LIBRARIES})
 add_executable(move_second_turtle src/move_second_turtle.cpp)
 target_link_libraries(move_second_turtle ${catkin_LIBRARIES})
 add_dependencies(move_second_turtle ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+add_executable(distance_checker_plus src/distance_checker_plus.cpp)
+target_link_libraries(distance_checker_plus ${catkin_LIBRARIES})
+add_dependencies(distance_checker_plus ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
