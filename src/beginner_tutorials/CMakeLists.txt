@@ -246,3 +246,7 @@ target_link_libraries(safe_zone_vel_publisher ${catkin_LIBRARIES})
 
 add_executable(smart_turtle src/smart_turtle.cpp)
 target_link_libraries(smart_turtle ${catkin_LIBRARIES})
+
+add_executable(move_second_turtle src/move_second_turtle.cpp)
+target_link_libraries(move_second_turtle ${catkin_LIBRARIES})
+add_dependencies(move_second_turtle ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
