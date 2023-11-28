@@ -255,3 +255,7 @@ add_dependencies(move_second_turtle ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin
 add_executable(distance_checker_plus src/distance_checker_plus.cpp)
 target_link_libraries(distance_checker_plus ${catkin_LIBRARIES})
 add_dependencies(distance_checker_plus ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+add_executable(distance_observer src/distance_observer.cpp)
+target_link_libraries(distance_observer ${catkin_LIBRARIES})
+add_dependencies(distance_observer ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
