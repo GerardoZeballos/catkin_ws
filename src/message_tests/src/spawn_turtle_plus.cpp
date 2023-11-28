@@ -67,10 +67,10 @@ int main(int argc, char **argv) {
     toggleForward();
     setInitialSpeed();
 
-    // Subscribe to "turtle1/cmd_vel" topic
+    //suscriber
     ros::Subscriber sub_cmd_vel = nh.subscribe("turtle1/cmd_vel", 1000, cmdVelCallback);
 
-    // Publisher for "MyTurtle/cmd_vel"
+    //Publisher
     My_turtle = nh.advertise<geometry_msgs::Twist>("Leo/cmd_vel", 1000);
 
     ros::spin();
