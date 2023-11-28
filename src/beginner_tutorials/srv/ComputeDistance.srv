@@ -1,0 +1,6 @@
+float64 turtle1_x
+float64 turtle1_y
+float64 turtle2_x
+float64 turtle2_y
+---
+float64 distance

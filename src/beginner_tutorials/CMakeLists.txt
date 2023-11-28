@@ -14,7 +14,6 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   geometry_msgs
   turtlesim
-  evaluation_ros
 )
 
 ## System dependencies are found with CMake's conventions
@@ -62,6 +61,7 @@ find_package(catkin REQUIRED COMPONENTS
   add_service_files(
     FILES
     AddTwoInts.srv
+    ComputeDistance.srv
   )
 
 ## Generate actions in the 'action' folder

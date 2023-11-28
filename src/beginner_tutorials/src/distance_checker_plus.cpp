@@ -2,7 +2,7 @@
 #include <turtlesim/Spawn.h>
 #include <turtlesim/Pose.h>
 #include <math.h>
-#include <evaluation_ros/ComputeDistance.h>
+#include <beginner_tutorials/ComputeDistance.h>
 
 ros::ServiceClient spawnClient;
 ros::ServiceServer distanceServer;
@@ -29,8 +29,8 @@ bool spawnTurtle()
   }
 }
 
-bool computeDistance(evaluation_ros::ComputeDistance::Request &req,
-                     evaluation_ros::ComputeDistance::Response &res)
+bool computeDistance(beginner_tutorials::ComputeDistance::Request &req,
+                     beginner_tutorials::ComputeDistance::Response &res)
 {
   float distance = sqrt(pow(turtle1_x - turtle2_x, 2) + pow(turtle1_y - turtle2_y, 2));
   res.distance = distance;
