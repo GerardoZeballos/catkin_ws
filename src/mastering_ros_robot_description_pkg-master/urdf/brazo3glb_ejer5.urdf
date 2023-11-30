@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<robot name="arm_3_dof">
+ 
+  <link name="base_link">
+ 
+    <visual>
+<geometry>
+<cylinder length="0.01" radius="0.2"/>
+</geometry>
+<origin rpy="0 0 0" xyz="0 0 0"/>
+<material name="yellow">
+<color rgba="1 1 0 1"/>
+</material>
+</visual>
+ 
+    <collision>
+<geometry>
+<cylinder length="0.03" radius="0.2"/>
+</geometry>
+<origin rpy="0 0 0" xyz="0 0 0"/>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+ 
+  <joint name="joint_1" type="revolute">
+<parent link="base_link"/>
+<child link="joint_1_link"/>
+<origin xyz="0 0 0.1"/>
+<axis xyz="0 0 1" />
+<limit effort="300" velocity="0.1" lower="-3.14" upper="3.14"/>
+<dynamics damping="50" friction="1"/>
+</joint>
+ 
+  <link name="joint_1_link">
+<visual>
+<geometry>
+<cylinder length="0.4" radius="0.04"/>
+</geometry>
+<origin rpy="0 0 0" xyz="0 0 0.09"/>
+<material name="blue">
+<color rgba="0 0 1 1"/>
+</material>
+</visual>
+<collision>
+<geometry>
+<cylinder length="0.4" radius="0.06"/>
+</geometry>
+<origin rpy="0 0 0" xyz="0 0 0.09"/>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+ 
+  <joint name="joint_2" type="revolute">
+<parent link="joint_1_link"/>
+<child link="joint_2_link"/>
+<origin rpy="0 0 1.5" xyz="0 0 0.3"/>
+<axis xyz="0 1 0" />
+<limit effort="300" velocity="0.1" lower="-2.5" upper="2.5"/>
+<dynamics damping="50" friction="1"/>
+</joint>
+ 
+  <link name="joint_2_link">
+<visual>
+<geometry>
+<cylinder length="0.3" radius="0.04"/>
+</geometry>
+<origin rpy="0 0 0" xyz="0 0 0.1"/>
+<material name="green">
+<color rgba="1 0 0 1"/>
+</material>
+</visual>
+<collision>
+<geometry>
+<cylinder length="0.4" radius="0.06"/>
+</geometry>
+<origin rpy="0 1.5 0" xyz="0 0 0"/>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+ 
+    <joint name="joint_3" type="revolute">
+<parent link="joint_2_link"/>
+<child link="joint_3_link"/>
+<origin rpy="0 0 1.5" xyz="0 0 0.2"/>
+<axis xyz="1 0 0" />
+<limit effort="300" velocity="0.1" lower="-2.5" upper="2.5"/>
+<dynamics damping="50" friction="1"/>
+</joint>
+ 
+  <link name="joint_3_link">
+<visual>
+<geometry>
+<cylinder length="0.3" radius="0.04"/>
+</geometry>
+<origin rpy="0 0 0" xyz="0 0 0.08"/>
+<material name="blue">
+<color rgba="0 0 1 1"/>
+</material>
+</visual>
+<collision>
+<geometry>
+<cylinder length="0.4" radius="0.06"/>
+</geometry>
+<origin rpy="0 1.5 0" xyz="0 0 0"/>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+ 
+</robot>
